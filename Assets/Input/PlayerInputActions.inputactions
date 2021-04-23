@@ -44,6 +44,14 @@
                     "expectedControlType": "Integer",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "1f002163-89b4-4890-a4cf-1f6fd1e6c538",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -149,7 +157,7 @@
                 {
                     "name": "negative",
                     "id": "ba1879be-7c58-47e6-a413-5514d47fb1aa",
-                    "path": "<Keyboard>/q",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -160,13 +168,24 @@
                 {
                     "name": "positive",
                     "id": "4d9697cd-c169-4623-9fa7-5aa089827b9c",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "ChangeSeason",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7586eedc-b0d1-4365-ad88-797a9d23609d",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
