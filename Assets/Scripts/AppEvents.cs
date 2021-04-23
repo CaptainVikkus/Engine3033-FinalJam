@@ -22,4 +22,12 @@ public class PlayerEvents
     {
         SeasonChanged?.Invoke(season);
     }
+
+    public delegate void PuzzleComplete();
+    public static event PuzzleComplete PuzzleCompleted;
+
+    public static void Invoke_PuzzleComplete()
+    {
+        PuzzleCompleted?.Invoke();
+    }
 }

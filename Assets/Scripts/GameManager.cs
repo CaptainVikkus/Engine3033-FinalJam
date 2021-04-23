@@ -6,6 +6,11 @@ public class GameManager : Singleton<GameManager>
 {
     public bool CursorActive { get; private set; } = true;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     private void EnableCursor(bool enable)
     {
         CursorActive = enable;

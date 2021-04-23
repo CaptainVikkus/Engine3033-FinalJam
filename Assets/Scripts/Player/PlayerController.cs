@@ -8,14 +8,21 @@ public class PlayerController : MonoBehaviour
     public bool IsJumping;
     public bool IsRunning;
     public bool IsFiring;
-    [SerializeField] public int CurrentSeason { get; private set; } = 1;
 
+    [SerializeField] Transform FireLocation;
+    [SerializeField] GameObject FireFX;
+    [SerializeField] public int CurrentSeason { get; private set; } = 0;
+
+    private AudioSource audio;
     private Animator animator;
     public static readonly int IsFiringHash = Animator.StringToHash("IsFiring");
+
+
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
     }
 
     public void OnChangeSeason(InputValue value)
@@ -35,7 +42,9 @@ public class PlayerController : MonoBehaviour
     {
         IsFiring = true;
         animator.SetBool(IsFiringHash, true);
-        //TODO:: Particles
+        //FX
+        //Instantiate(FireFX, FireLocation);
+        audio.Play();
 
         InvokeRepeating(nameof(StopChangeSeason), 0, 0.1f);
     }
