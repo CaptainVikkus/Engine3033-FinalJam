@@ -5,9 +5,6 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] float RotationPower = 250f;
-    [SerializeField] float HorizontalDamping = 1f;
-
     private void Start()
     {
         AppEvents.Invoke_OnMouseCursorEnable(false);
@@ -19,7 +16,7 @@ public class CameraController : MonoBehaviour
 
         //Smooth Rotation
         Quaternion addRot = Quaternion.AngleAxis(
-            aim.x * RotationPower * Time.deltaTime,
+            aim.x * GameManager.Sensitivity * Time.deltaTime,
             transform.up);
         //Rotate cam horizontal
         transform.rotation *= addRot;

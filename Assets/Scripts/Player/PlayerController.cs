@@ -8,13 +8,16 @@ public class PlayerController : MonoBehaviour
     public bool IsJumping;
     public bool IsRunning;
     public bool IsFiring;
+    public bool IsPaused;
 
     [SerializeField] Transform FireLocation;
     [SerializeField] GameObject FireFX;
+    [SerializeField] GameObject PauseUI;
     [SerializeField] public int CurrentSeason { get; private set; } = 0;
 
-    private AudioSource audio;
+    private new AudioSource audio;
     private Animator animator;
+    private PlayerInput input;
     public static readonly int IsFiringHash = Animator.StringToHash("IsFiring");
 
 
@@ -23,6 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
+        input = GetComponent<PlayerInput>();
     }
 
     public void OnChangeSeason(InputValue value)
@@ -43,7 +47,8 @@ public class PlayerController : MonoBehaviour
         IsFiring = true;
         animator.SetBool(IsFiringHash, true);
         //FX
-        //Instantiate(FireFX, FireLocation);
+        var particle = Instantiate(FireFX, FireLocation).GetComponent<ParticleController>();
+        particle.SetSeason((Season)CurrentSeason);
         audio.Play();
 
         InvokeRepeating(nameof(StopChangeSeason), 0, 0.1f);
@@ -56,5 +61,20 @@ public class PlayerController : MonoBehaviour
         PlayerEvents.Invoke_SeasonChange(CurrentSeason);
         IsFiring = false;
         CancelInvoke(nameof(StopChangeSeason));
+    }
+
+    private void OnPause(InputValue pressed)
+    {
+        PauseToggle();
+    }
+
+    public void PauseToggle()
+    {
+        IsPaused = !IsPaused;
+
+        Time.timeScale = IsPaused ? 0f : 1f;
+        PauseUI.SetActive(IsPaused);
+        AppEvents.Invoke_OnMouseCursorEnable(IsPaused);
+        input.SwitchCurrentActionMap(IsPaused ? "UI" : "Player");
     }
 }

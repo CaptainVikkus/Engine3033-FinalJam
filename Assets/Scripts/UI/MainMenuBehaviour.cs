@@ -45,6 +45,7 @@ public class MainMenuBehaviour : MonoBehaviour
 
     public void OpenLevel(int build)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(build);
     }
 
