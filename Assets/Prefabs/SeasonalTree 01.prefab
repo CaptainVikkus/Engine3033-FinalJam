@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4534697598610478107}
   - component: {fileID: 4534697598610478106}
   m_Layer: 0
-  m_Name: SeasonalTree
+  m_Name: SeasonalTree 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

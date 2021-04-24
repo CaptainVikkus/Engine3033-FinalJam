@@ -3014,7 +3014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objective: {fileID: 1428088860}
-  displaySeconds: 100
+  displaySeconds: 3
 --- !u!1001 &1454975182
 PrefabInstance:
   m_ObjectHideFlags: 0
